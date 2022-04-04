@@ -15,7 +15,6 @@ import lombok.Setter;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@ApiModel
 public class AlgemeenDto {
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
