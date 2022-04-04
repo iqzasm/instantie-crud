@@ -11,8 +11,8 @@ public class WebConfig implements WebMvcConfigurer {
     /**
      * Property Origins
      */
-    @Value("${app.origin}")
-    private String origins;
+    @Value("${app.origins}")
+    private String[] origins;
 
     /**
      * Cors Mapping Method
