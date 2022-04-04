@@ -9,7 +9,7 @@ Spring Boot Java Application using REST and JPA for CRUD operations
 
 OpenAPI(Swagger3) has been used for API Documentation. As soon as application is up, the swagger ui can be found under the below URI.
 
-> http://localhost:9001/swagger-ui/
+> http://localhost:8085/swagger-ui/
 
 ###### Tools & Technology Stack Used
 * Java 11
