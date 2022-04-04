@@ -53,4 +53,4 @@ In order to test the application, CORS is enabled for all origins.
 `*` is added for testing. This should be removed in prod environment
 
 #### Postman collection:
-Use this [postman collection](https://github.com/iqzasm/instantie-crud/api.json) to test the api service.
+Use this [postman collection](https://github.com/iqzasm/instantie-crud/blob/main/Instantie.postman_collection.json) to test the api service.
