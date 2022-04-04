@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "6a1a9eb2-88c5-4aa4-a2f2-b88cd8e6d988",
+		"name": "Instantie",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Algemeen",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"algmEndDatum\": \"2022-12-03T19:23:12.951Z\",\r\n  \"algmNaam\": \"Algameen 8\",\r\n  \"algmStartDatum\": \"2022-11-03T19:23:12.951Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8085/api/v1/algemeen",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"v1",
+						"algemeen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Active Categorie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8085/api/v1/categorie",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"v1",
+						"categorie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Active Categorie By Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8085/api/v1/categorie?name=TEST2INCA 2",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"v1",
+						"categorie"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "TEST2INCA 2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Categorie",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"incaNaam\" : \"TEST2INCA 81\",\r\n    \"incaType\" : 8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8085/api/v1/categorie-instantie",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"v1",
+						"categorie-instantie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Instantie",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"instNaam\" : \"TEST_INST 73\",\r\n  \"instVolgNummer\" : 10,\r\n  \"instStartDatum\" : \"2022-04-01\",\r\n  \"instEndDatum\" : \"2022-04-30\",\r\n  \"instCategorie\" : 7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8085/api/v1/instantie",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"v1",
+						"instantie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Instantie by Categorie",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"instNaam\" : \"TEST_INST 71\",\r\n  \"instVolgNummer\" : 10,\r\n  \"instStartDatum\" : \"2022-04-01\",\r\n  \"instEndDatum\" : \"2022-04-30\",\r\n  \"instCategorie\" : 7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8085/api/v1/categorie-instantie/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"v1",
+						"categorie-instantie",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Categorie",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"instNaam\" : \"TEST_INST 71\",\r\n  \"instVolgNummer\" : 10,\r\n  \"instStartDatum\" : \"2022-04-01\",\r\n  \"instEndDatum\" : \"2022-04-30\",\r\n  \"instCategorie\" : 7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8085/api/v1/categorie/20",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"v1",
+						"categorie",
+						"20"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
