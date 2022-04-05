@@ -5,6 +5,7 @@ import java.util.List;
 import com.avinty.instantie.assembler.InstantieCategorieAssembler;
 import com.avinty.instantie.dto.InstantieCategorieDto;
 import com.avinty.instantie.entity.InstantieCategorieEntity;
+import com.avinty.instantie.exception.InstantieException;
 import com.avinty.instantie.repository.InstantieCategorieRepository;
 import com.avinty.instantie.service.IInstantieCategorieService;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +33,15 @@ public class InstantieCategorieServiceImpl implements IInstantieCategorieService
             return assembler.toResources(categorieRepository.findCategoryByName(incaNaam));
         }
         List<InstantieCategorieEntity> categorieEntities = categorieRepository.findActiveCategories();
-        return assembler.toResources(categorieEntities);
+        List<InstantieCategorieDto> categorieDtos = assembler.toResources(categorieEntities);
+
+        
+        if(categorieDtos==null || categorieDtos.isEmpty())
+        {
+            throw new InstantieException("No Active Instantie Categorie found for the given input");
+        }
+
+        return categorieDtos;
     }
 
     @Override
