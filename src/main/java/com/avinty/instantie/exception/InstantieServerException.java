@@ -1,6 +1,6 @@
 package com.avinty.instantie.exception;
 
-public class InstantieServerException extends Exception{
+public class InstantieServerException extends InstantieException{
     /**
      * Default Serial ID
      */

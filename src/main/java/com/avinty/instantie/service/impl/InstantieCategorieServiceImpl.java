@@ -33,15 +33,7 @@ public class InstantieCategorieServiceImpl implements IInstantieCategorieService
             return assembler.toResources(categorieRepository.findCategoryByName(incaNaam));
         }
         List<InstantieCategorieEntity> categorieEntities = categorieRepository.findActiveCategories();
-        List<InstantieCategorieDto> categorieDtos = assembler.toResources(categorieEntities);
-
-        
-        if(categorieDtos==null || categorieDtos.isEmpty())
-        {
-            throw new InstantieException("No Active Instantie Categorie found for the given input");
-        }
-
-        return categorieDtos;
+        return assembler.toResources(categorieEntities);
     }
 
     @Override

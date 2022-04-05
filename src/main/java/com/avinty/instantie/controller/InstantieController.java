@@ -1,18 +1,18 @@
 package com.avinty.instantie.controller;
 
-import java.util.List;
-
 import com.avinty.instantie.dto.AlgemeenDto;
 import com.avinty.instantie.dto.InstantieCategorieDto;
 import com.avinty.instantie.dto.InstantieDto;
+import com.avinty.instantie.exception.NotFoundException;
 import com.avinty.instantie.service.IAlgemeenService;
 import com.avinty.instantie.service.IInstantieCategorieService;
 import com.avinty.instantie.service.IInstantieService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -40,6 +40,10 @@ public class InstantieController {
         List<InstantieCategorieDto> instantieCategories =
                 instantieCategorieService.getActiveInstantieCategorie(incaNaame, incaNaame != null);
 
+        if (CollectionUtils.isEmpty(instantieCategories)) {
+            throw new NotFoundException("No Active Instantie Categorie found for the given input");
+        }
+
         return ResponseEntity.ok().body(instantieCategories);
     }
 
@@ -49,6 +53,10 @@ public class InstantieController {
         log.info("start getAllInstanties {}", this.getClass().getSimpleName());
 
         List<InstantieDto> instanties = instantieService.getActiveInstantie(categoryId);
+
+        if (CollectionUtils.isEmpty(instanties)) {
+            throw new NotFoundException("No Active Instantie found for the given input");
+        }
 
         return ResponseEntity.ok().body(instanties);
     }

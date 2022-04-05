@@ -1,8 +1,6 @@
 package com.avinty.instantie.exception.handler;
 
-import com.avinty.instantie.exception.InstantieException;
-import com.avinty.instantie.exception.InstantieServerException;
-import com.avinty.instantie.exception.ErrorResponse;
+import com.avinty.instantie.exception.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -23,15 +21,43 @@ public class InstantieErrorHandler {
     /**
      * Exception Handling Not Found Method
      * @param req httpservlet req
-     * @param ie Instantie custom exception
+     * @param e custom exception
      * @return Error Response
      */
     @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NotFoundException.class)
+    @ResponseBody
+    public ErrorResponse handleNotFoundException(HttpServletRequest req, InstantieException e) {
+        log.info("Not Found Exception {}", e.getMessage());
+        return ErrorResponse.builder().status(HttpStatus.NOT_FOUND.value()).message(HttpStatus.NOT_FOUND.getReasonPhrase()).details(e.getMessage()).build();
+    }
+
+    /**
+     * Exception Handling Internal Server Error Method
+     * @param e custom exception
+     * @return Error Response
+     */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(BadRequestException.class)
+    @ResponseBody
+    public ErrorResponse handleBadRequestException(InstantieException e) {
+        log.info("Bad Request Exception {}", e.getMessage());
+        return ErrorResponse.builder().status(HttpStatus.BAD_REQUEST.value()).message(HttpStatus.BAD_REQUEST.getReasonPhrase()).details(e.getMessage()).build();
+    }
+
+
+    /**
+     * Exception Handling Not Found Method
+     * @param req httpservlet req
+     * @param ie Instantie custom exception
+     * @return Error Response
+     */
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(InstantieException.class)
     @ResponseBody
     public ErrorResponse handleInstantieException(HttpServletRequest req, InstantieException ie) {
         log.info("InstantieException {}", ie.getMessage());
-        return ErrorResponse.builder().status(HttpStatus.NOT_FOUND.value()).message(HttpStatus.NOT_FOUND.getReasonPhrase()).details(ie.getMessage()).build();
+        return ErrorResponse.builder().status(HttpStatus.INTERNAL_SERVER_ERROR.value()).message(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase()).details(ie.getMessage()).build();
     }
 
     /**
